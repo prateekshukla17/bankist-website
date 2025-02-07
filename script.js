@@ -78,4 +78,47 @@ console.log(getComputedStyle(message).height);
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-// document.documentElement.style.setProperty('--color-primary', 'orangered')
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.className);
+
+logo.setAttribute('company', 'bankist');
+console.log(logo.getAttribute('src'));
+
+const src = 'img/logo.png';
+
+logo.setAttribute('src', src);
+
+// data attributes
+
+console.log(logo.dataset.versionNumber);
+
+//Classes
+logo.classList.add('c', 'd');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c');
+logo.classList.contains('c');
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coord = section1.getBoundingClientRect();
+
+  console.log(s1coord); //coordinates of section one
+
+  console.log(e.target.getBoundingClientRect());
+  // get coordinates of the target element which is clicked
+
+  //Scrolling to the section 1
+  // window.scrollTo(
+  //   s1coord.left + window.pageXOffset,
+  //   s1coord.top + window.pageYOffset
+  // );
+
+  window.scrollTo({
+    left: s1coord.left + window.pageXOffset,
+    top: s1coord.top + window.pageYOffset,
+    behavior: 'smooth',
+  });
+});
