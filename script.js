@@ -123,21 +123,30 @@ btnScrollTo.addEventListener('click', function (e) {
   });
 });
 /////////////////////////////////////////////////////
-document.querySelectorAll('.nav_link').forEach(function (el) {
+
+document.querySelectorAll('.nav__link').forEach(function (el) {
   el.addEventListener('click', function (e) {
-    console.log('Link');
+    e.preventDefault();
+
+    const id = this.getAttribute('href');
+    console.log(id);
+
+    document.querySelector(id).scrollIntoView({
+      behavior: 'smooth',
+    });
   });
 });
+
 ///////////////////////////////////////////////////
 
-const heading = document.querySelector('h1');
+// const heading = document.querySelector('h1');
 
-const alerth1 = function (e) {
-  alert('addEventListener: Great! Your are reading the heading :)');
+// const alerth1 = function (e) {
+//   alert('addEventListener: Great! Your are reading the heading :)');
 
-  // heading.removeEventListener('mouseenter', alerth1);
-};
+//   // heading.removeEventListener('mouseenter', alerth1);
+// };
 
-heading.addEventListener('mouseenter', alerth1);
+// heading.addEventListener('mouseenter', alerth1);
 
-setTimeout(() => h1.removeEventListener('mouseenter', alerth1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter', alerth1), 3000);
