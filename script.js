@@ -122,3 +122,22 @@ btnScrollTo.addEventListener('click', function (e) {
     behavior: 'smooth',
   });
 });
+/////////////////////////////////////////////////////
+document.querySelectorAll('.nav_link').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    console.log('Link');
+  });
+});
+///////////////////////////////////////////////////
+
+const heading = document.querySelector('h1');
+
+const alerth1 = function (e) {
+  alert('addEventListener: Great! Your are reading the heading :)');
+
+  // heading.removeEventListener('mouseenter', alerth1);
+};
+
+heading.addEventListener('mouseenter', alerth1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alerth1), 3000);
