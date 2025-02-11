@@ -158,6 +158,30 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+// Creating tiped componets
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabContainer.addEventListener('click', function (el) {
+  const clicked = el.target.closest('.operations__tab');
+  //console.log(clicked);
+
+  if (!clicked) return;
+
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  //console.log(tabContents);
+  //removing the exisisting content classes
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  //Activate Content Area
+
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 ///////////////////////////////////////////////////
 
 // const heading = document.querySelector('h1');
@@ -183,9 +207,26 @@ console.log(h1.querySelectorAll('.highlight'));
 console.log(h1.children);
 console.log(h1.firstElementChild);
 console.log(h1.lastElementChild);
-console.log((h1.lastElementChild.style.color = 'pink'));
+//console.log((h1.lastElementChild.style.color = 'pink '));
 
-// console.log(h1.parentNode);
-// console.log(h1.parentElement);
+// Find parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+console.log(h1.closest('.header'));
 
-// console.log(h1.closest('.header'));
+// Going Sidways: Sibling
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+
+//traversing the siblings and changing the size of
+console.log([...h1.parentElement.children]);
+
+const newarr = [...h1.parentElement.children];
+
+// newarr.forEach(function (el) {
+//   if (el !== h1) el.style.color = 'blue';
+// });
