@@ -124,17 +124,38 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 /////////////////////////////////////////////////////
 
-document.querySelectorAll('.nav__link').forEach(function (el) {
-  el.addEventListener('click', function (e) {
-    e.preventDefault();
+// Enabling Smoooth Scrolling between the sectionss!
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
 
-    const id = this.getAttribute('href');
+//     const id = this.getAttribute('href');
+//     console.log(id);
+
+//     document.querySelector(id).scrollIntoView({
+//       behavior: 'smooth',
+//     });
+//   });
+// });
+
+//1. Add event listner to the common parent
+//2. Determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log(e.target);
+
+  e.preventDefault();
+
+  //Matching Stragery (event delegation  )
+
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
     console.log(id);
 
     document.querySelector(id).scrollIntoView({
       behavior: 'smooth',
     });
-  });
+  }
 });
 
 ///////////////////////////////////////////////////
@@ -149,4 +170,22 @@ document.querySelectorAll('.nav__link').forEach(function (el) {
 
 // heading.addEventListener('mouseenter', alerth1);
 
-// setTimeout(() => h1.removeEventListener('mouseenter', alerth1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter', alerth1), 3000)
+
+//setTime(() => h1.removeEventListener('click', 'alerth1'), 3000);
+
+// DOM Traversing
+
+const h1 = document.querySelector('h1');
+
+console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+console.log(h1.children);
+console.log(h1.firstElementChild);
+console.log(h1.lastElementChild);
+console.log((h1.lastElementChild.style.color = 'pink'));
+
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+
+// console.log(h1.closest('.header'));
