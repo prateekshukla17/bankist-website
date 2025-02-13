@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const nav = document.querySelector('.nav');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -181,6 +182,37 @@ tabContainer.addEventListener('click', function (el) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+// Menu Fade Animation, Passing arguments to the event handlers
+
+const handover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+
+    logo.style.opacity = this;
+  }
+};
+// Passing "argument" into handler
+nav.addEventListener('mouseover', handover.bind(0.5));
+nav.addEventListener('mouseout', handover.bind(1));
+
+//Sticky Navigation (scroll event is bad for performance,it hits
+// everytime we trigger)
+// const coordinates_s1 = section1.getBoundingClientRect();
+
+// window.addEventListener('scroll', function (e) {
+//   if (window.scrollY > coordinates_s1.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
 
 ///////////////////////////////////////////////////
 
