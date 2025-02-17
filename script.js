@@ -214,6 +214,39 @@ nav.addEventListener('mouseout', handover.bind(1));
 //   }
 // });
 
+//sticky Navigation API
+
+// const obsCallBack = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+// const obsOptions = {
+//   root: null,
+//   threshold: 0.1,
+// };
+
+// const observer = new IntersectionObserver(obsCallBack, obsOptions);
+
+// observer.observe(section1);
+
+const header_1 = document.querySelector('.header');
+
+const stickynav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObs = new IntersectionObserver(stickynav, {
+  root: null,
+  threshold: 0,
+});
+
+headerObs.observe(header_1);
+
 ///////////////////////////////////////////////////
 
 // const heading = document.querySelector('h1');
