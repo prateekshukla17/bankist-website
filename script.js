@@ -247,6 +247,23 @@ const headerObs = new IntersectionObserver(stickynav, {
 
 headerObs.observe(header_1);
 
+/////////////////////////////////
+// Applying reavealing on scroll effect
+const allSections = document.querySelectorAll('.section');
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  entry.target.classList.remove('section--hidden');
+};
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.3,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
 ///////////////////////////////////////////////////
 
 // const heading = document.querySelector('h1');
